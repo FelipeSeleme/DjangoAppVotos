@@ -46,12 +46,13 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
 def resultsData(request, obj):
-  votedata = []
+    votedata = []
 
-  question = Question.objects.get(id=obj)
-  votes = question.choice_set.all()
+    question = Question.objects.get(id=obj)
+    votes = question.choice_set.all()
 
-  for i in votes:
-    votedata.append({i.choice_text:i.votes})
+    for i in votes:
+        votedata.append({i.choice_text:i.votes})
 
-  return JsonResponse(votedata, safe=False)
+    print(votedata)
+    return JsonResponse(votedata, safe=False)
