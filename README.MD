@@ -2,14 +2,28 @@
 
 **VotAqui** é um aplicativo de votação desenvolvido com Python e Django,que permite aos usuários criar perguntas e alternativas, submeter votos, armazenar os resultados em um banco de dados, contabilizar os votos e exibir os resultados em formato gráfico.
 
+![Página Inicial](images/inicial.png)
+
 ---
 
 ## Funcionalidades
 
 - **Criação de perguntas:** Permite a definição de uma pergunta e suas respectivas alternativas.
+
+![Perguntas](images/perguntas.png)
+
 - **Submissão de votos:** Usuários podem selecionar uma alternativa e enviar seu voto.
+
+![Votar](images/votar.png)
+
 - **Armazenamento de dados:** Todos os votos são armazenados em um banco de dados.
+
 - **Exibição de resultados:** Mostra o número de votos por alternativa e apresenta um gráfico interativo para visualização.
+
+![Resultado](images/resultado.png)
+
+![Resultado2](images/resultado2.png)
+
 - **Interface responsiva:** Design limpo e responsivo utilizando Bootstrap.
 
 ---
@@ -75,74 +89,6 @@
 2. **Submeter votos:** No aplicativo, clique na pergunta para abrir a tela de votação e selecione uma alternativa.
 
 3. **Visualizar resultados:** Após votar, veja os resultados atualizados com o número total de votos e o gráfico dinâmico.
-
----
-
-## Exemplo de Páginas
-
-### Tela Inicial
-- Apresenta uma mensagem de boas-vindas e um link para as votações:
-
-```html
-<div class="card text-center">
-	<div class="card-body">
-		<h1>Bem-vindo ao VotAqui</h1>
-		<p>Esse é um exemplo de App de votação em Django</p>
-		<a class="btn btn-dark" href="{% url 'polls:index' %}">
-			Ver votações disponíveis</a>
-	</div>
-</div>
-```
-
-### Resultados
-- Mostra os votos por alternativa e um gráfico interativo:
-
-```html
-<ul class="list-group mb-5">
-    {% for choice in question.choice_set.all %}
-    <li class="list-group-item">
-        {{ choice.choice_text }}
-        <span class="badge badge-success float-right">
-            {{ choice.votes }} voto{{ choice.votes | pluralize }}</span>
-    </li>
-    {% endfor %}
-</ul>
-<div id="myChart"></div>
-```
-
-### Gráfico Interativo
-- O gráfico é renderizado com ZingChart, exibindo votos em tempo real.
-
-```javascript
-function buildChart() {
-    var chartData = {
-        "type": "bar",
-        "scale-x": {
-            "values": state.items,
-            "item": {
-                "angle": 270,
-                "font-size": "12px",
-                "padding-bottom": "10px"
-            }
-        },
-        "series": [
-            {
-                "values": state.values
-            }
-        ],
-        "plotarea": {
-            "margin-bottom": "100px"
-        }
-    };
-
-    zingchart.render({
-        id: "myChart",
-        data: chartData,
-        width: "100%",
-        height: "500px"
-    });
-}
-```
 
 ---
 
